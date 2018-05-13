@@ -12,6 +12,8 @@ class WikisController < ApplicationController
   end
 
   def create
+    p "the params are-------------------!"
+    p params.permit!
      @wiki = Wiki.new(wiki_params)
 
 

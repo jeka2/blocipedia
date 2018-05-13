@@ -1,6 +1,6 @@
 <h1>List of Wiki Articles</h1>
 
-<%= link_to "Create an article", @wiki, method: :new, class: 'btn btn-info' %>
+<%= link_to "Create an article", new_wiki_path, class: 'btn btn-info' %>
 <div class="row">
   <div class="col-md-8">
     <% @wikis.each do |wiki| %>
