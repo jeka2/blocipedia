@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = current_user.wikis
   end
 
   def show
@@ -12,15 +12,13 @@ class WikisController < ApplicationController
   end
 
   def create
-    p "the params are-------------------!"
-    p params.permit!
-     @wiki = Wiki.new(wiki_params)
+     @wiki = current_user.wikis.new(wiki_params)
 
 
      if @wiki.save
        redirect_to @wiki, notice: "The wiki was saved successfully."
      else
-       flash.now[:alert] = "Error creating topic. Please try again."
+       flash.now[:alert] = "Error creating article. Please try again."
        render :new
      end
    end
@@ -28,6 +26,31 @@ class WikisController < ApplicationController
   def edit
     @wiki = Wiki.find(params[:id])
   end
+
+  def update
+
+     @wiki = Wiki.find(params[:id])
+
+
+     if @wiki.update(wiki_params)
+       redirect_to @wiki, notice: "The wiki was saved successfully."
+     else
+       flash.now[:alert] = "Error creating article. Please try again."
+       render :new
+     end
+   end
+
+   def destroy
+     @wiki = Wiki.find(params[:id])
+
+     if @wiki.destroy
+       flash[:alert] = "The article has been destroyed"
+     else
+       flash[:notice] = "Unable to delete the article"
+     end
+
+     redirect_to root_path
+   end
 
 
   private
