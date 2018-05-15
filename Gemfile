@@ -17,6 +17,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bcrypt', git: 'git://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'bootstrap-sass'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

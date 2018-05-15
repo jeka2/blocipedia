@@ -17,4 +17,25 @@ users = User.all
   )
 end
 
+User.create!(
+  email:        "standard@example.com",
+  password:     "password",
+  role:         "standard",
+  confirmed_at: Time.now
+)
+
+User.create!(
+  email:        "premium@example.com",
+  password:     "password",
+  role:         "premium",
+  confirmed_at: Time.now
+)
+
+User.create!(
+  email:        "admin@example.com",
+  password:     "password",
+  role:         "admin",
+  confirmed_at: Time.now
+)
+
 puts "#{Wiki.count} wikis created"
