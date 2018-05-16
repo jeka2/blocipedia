@@ -7,7 +7,6 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
-    authorize @wiki
   end
 
   def new
@@ -31,10 +30,8 @@ class WikisController < ApplicationController
   end
 
   def update
-
      @wiki = Wiki.find(params[:id])
-
-
+     authorize @wiki
      if @wiki.update(wiki_params)
        redirect_to @wiki, notice: "The wiki was saved successfully."
      else
