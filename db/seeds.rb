@@ -1,8 +1,9 @@
 require 'random_data'
+require 'faker'
 
 50.times do
 User.create!(
-  email: "#{RandomData.random_word}@#{RandomData.random_word}.com",
+  email:    Faker::Internet.email,
   password: "password"
 )
 end
@@ -18,24 +19,21 @@ users = User.all
 end
 
 User.create!(
-  email:        "standard@example.com",
+  email:        "ex@ex.com",
   password:     "password",
-  role:         "standard",
   confirmed_at: Time.now
 )
 
-User.create!(
-  email:        "premium@example.com",
-  password:     "password",
-  role:         "premium",
+u = User.create!(
+  email:        Faker::Internet.email,
+  password:     Faker::Internet.password(8,20),
   confirmed_at: Time.now
 )
 
-User.create!(
-  email:        "admin@example.com",
-  password:     "password",
-  role:         "admin",
-  confirmed_at: Time.now
+Wiki.create!(
+  user:  u,
+  title: Faker::OnePiece.island,
+  body:  Faker::OnePiece.quote
 )
 
-puts "#{Wiki.count} wikis created"
+puts "seeded"
