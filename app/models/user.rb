@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   enum role: [:standard,:premium,:admin]
 
+
 end

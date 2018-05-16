@@ -7,8 +7,5 @@ class WikiPolicy < ApplicationPolicy
     @post = post
   end
 
-  def index?
-    true
-  end
 
 end

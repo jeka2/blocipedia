@@ -19,6 +19,7 @@ gem 'bcrypt', git: 'git://github.com/codahale/bcrypt-ruby.git', :require => 'bcr
 gem 'bootstrap-sass'
 gem 'pundit'
 gem 'faker'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

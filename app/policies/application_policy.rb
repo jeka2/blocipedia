@@ -1,4 +1,5 @@
 class ApplicationPolicy
+  include ApplicationHelper
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -7,7 +8,7 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
@@ -15,7 +16,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    user.present?
   end
 
   def new?
@@ -31,7 +32,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    post.user == user
   end
 
   def scope
