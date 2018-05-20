@@ -1,6 +1,4 @@
 <hi><%= @wiki.title %></hi>
-<%= @wiki.private %>
-<%= current_user.role %>
 
 <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-warning' %>
 <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this article?' } %>
