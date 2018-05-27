@@ -85,6 +85,8 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -215,6 +217,7 @@ DEPENDENCIES
   faker
   figaro
   jbuilder (~> 2.5)
+  jquery-ui-rails
   pg
   puma (~> 3.7)
   pundit

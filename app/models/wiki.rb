@@ -1,11 +1,11 @@
 class Wiki < ApplicationRecord
   belongs_to :user
   after_update :initialize_wiki, except: :new
+  has_many :users, through: :collaboration
+
 
   private
   def initialize_wiki
-    if self.user.role == "standard"
-      self.private = false
-    end
+    self.private ||= false
   end
 end

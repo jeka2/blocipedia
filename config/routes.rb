@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'downgrade/create'
+  resources :search_suggestions, only: :index
+
+  resources :collaborations, only: [:new,:create,:delete]
+
+  resources :downgrades, only: :create
 
   resources :charges, only: [:new,:create,:destroy]
 
