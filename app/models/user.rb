@@ -13,6 +13,10 @@ class User < ApplicationRecord
     where('LOWER(title) LIKE :term', term: "%#{term.downcase}%")
   end
 
+  def downgrade
+    self.standard!
+  end
+
   private
   def publish_wikis
     if self.standard?

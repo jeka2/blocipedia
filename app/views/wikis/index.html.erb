@@ -3,21 +3,7 @@
 <%= link_to "Create an article", new_wiki_path, class: 'btn btn-info' %>
 <div class="row">
   <div class="col-md-8">
-    <% if @wikis.where(:private => true, :user => current_user).count > 0 %>
-      <h2>Your Private Wikis:</h2>
-      <% @wikis.where(:private => true, :user => current_user).each do |wiki| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to wiki.title, wiki %>
-          </h4>
-        </div>
-      </div>
-      <% end %>
-    <% end %>
-
-    <h2>List of Wikis:</h2>
-    <% @wikis.where(private: false).each do |wiki| %>
+    <% @wikis.each do |wiki| %>
     <div class="media">
       <div class="media-body">
         <h4 class="media-heading">

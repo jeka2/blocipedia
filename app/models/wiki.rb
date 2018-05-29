@@ -1,7 +1,8 @@
 class Wiki < ApplicationRecord
   belongs_to :user
   after_update :initialize_wiki, except: :new
-  has_many :users, through: :collaboration
+  has_many :collaborations
+  has_many :users, through: :collaborations
 
 
   private

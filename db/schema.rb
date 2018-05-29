@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526233939) do
+ActiveRecord::Schema.define(version: 20180528174335) do
 
   create_table "collaborations", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180526233939) do
     t.integer "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked"
   end
 
   create_table "users", force: :cascade do |t|

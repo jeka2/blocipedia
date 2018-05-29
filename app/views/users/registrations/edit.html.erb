@@ -38,7 +38,7 @@
   <div>
     <% if current_user.premium? %>
       <br><%= "If you would like to downgrade, click the button below. Your created private wiki's will remain private" %></br>
-      <%= link_to "<button>Downgrade</button>".html_safe, downgrade_create_path, :id=>"open-contacts-dialog-btn", :class=>"inbox-sf-add-btn tip", data: { confirm: "Are you sure you want to downgrade?" } %>
+      <%= link_to "<button>Downgrade</button>".html_safe, downgrades_path, method: :post, :id=>"open-contacts-dialog-btn", :class=>"inbox-sf-add-btn tip", data: { confirm: "Are you sure you want to downgrade?" } %>
     <% else %>
       <br><%= "Upgrade for the ability to create your very own private wikis!" %></br>
       <%= link_to "<button>Go Premium!</button>".html_safe, new_charge_path, :id=>"open-contacts-dialog-btn", :class=>"inbox-sf-add-btn tip" %>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :search_suggestions, only: :index
+  resources :search_suggestions, only: [:new, :create]
 
-  resources :collaborations, only: [:new,:create,:delete]
+  resources :collaborations, only: [:create,:edit,:destroy]
 
   resources :downgrades, only: :create
 

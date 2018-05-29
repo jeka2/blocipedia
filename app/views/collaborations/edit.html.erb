@@ -1,0 +1,20 @@
+<%= form_tag(collaboration_path, :method => :delete) do %>
+<%= hidden_field_tag :id %>
+<div class="row">
+  <div class="col-md-5">
+    <h2>List of Collaborators</h2>
+    <% @colabs.each do |c| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="pull-left">
+            <%= user = User.find_by(id: c.user_id).email %>
+            <%= check_box_tag 'selected_emails[]', user -%>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= submit_tag %>
+<% end %>
+<%= params %>

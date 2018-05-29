@@ -1,5 +1,8 @@
-<hi><%= @wiki.title %></hi>
-<%= @wiki.id %>
+<%= p @wiki.user_id %>
+<%= p @wiki.collaborations %>
+<%= p current_user %>
+
+<h3><%= @wiki.title %></h3>
 <div class="row">
   <div class="col-md-9">
       <%= markdown(@wiki.body) %>
@@ -7,11 +10,14 @@
   <div class="col-md-3">
     <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-warning' %>
     <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this article?' } %>
-    <h6>For possible collaboration on the article, consider the following users:</h6>
-    <%= form_tag (controller: "search_suggestions", action: "index", method: "get") do %>
-      <input class="seach full width" id="searchbar" name="query" placeholder="Search User by Email" type="text"
-      autocomplete="off">
+    <h6>For possible collaboration on the article, you can search users by email:</h6>
+      <%= form_tag :new_search_suggestion, method: :get do %>
+        <%= hidden_field_tag :wiki_id, @wiki.id %>
+        <input class="seach full width" id="searchbar" name="query" placeholder="Search User by Email" type="text"
+        autocomplete="off">
     <% end %>
+    <br>
+    <%= link_to "Remove Collaborators", edit_collaboration_path, class: 'btn btn-info' %>
 </div>
 
 <br>
