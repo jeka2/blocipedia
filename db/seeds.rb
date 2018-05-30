@@ -4,7 +4,8 @@ require 'faker'
 50.times do
 User.create!(
   email:    Faker::Internet.email,
-  password: "password"
+  password: "password",
+  role: "standard"
 )
 end
 
@@ -20,10 +21,26 @@ users = User.all
 end
 
 User.create!(
-  email:        "ex@ex.com",
+  email:        "standard@standard.com",
   password:     "password",
-  confirmed_at: Time.now
+  confirmed_at: Time.now,
+  role:         "standard"
 )
+
+User.create!(
+  email:        "premium@premium.com",
+  password:     "password",
+  confirmed_at: Time.now,
+  role:         "premium"
+)
+
+User.create!(
+  email:        "admin@admin.com",
+  password:     "password",
+  confirmed_at: Time.now,
+  role:         "admin"
+)
+
 
 u = User.create!(
   email:        Faker::Internet.email,

@@ -3,7 +3,21 @@
 <%= link_to "Create an article", new_wiki_path, class: 'btn btn-info' %>
 <div class="row">
   <div class="col-md-8">
-    <% @wikis.each do |wiki| %>
+    <% if @wikis.select { |p| (p.private && (p.user_id == current_user.id || current_user.admin?)) || p.collaborations.where(user_id: current_user.id).exists? }.count > 0 %>
+      <h3>Private and Collaborated Wikis:</h3>
+      <% @wikis.select { |p| (p.private && (p.user_id == current_user.id || current_user.admin?)) || p.collaborations.where(user_id: current_user.id).exists? }.each do |wiki| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= link_to wiki.title, wiki %>
+          </h4>
+        </div>
+      </div>
+      <% end %>
+    <h3>Public Wikis:</h3>
+    <% end %>
+
+    <% @wikis.select { |p| !p.private }.each do |wiki| %>
     <div class="media">
       <div class="media-body">
         <h4 class="media-heading">
